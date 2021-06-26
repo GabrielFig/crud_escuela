@@ -1,0 +1,210 @@
+{% extends 'crudapp/base.html' %}
+
+{% load widget_tweaks %}
+
+{% block content %}
+  <div class="container">
+    <h2>Add person</h2>
+    <form method="post">
+        {% csrf_token %}
+        {% for hidden in form.hidden_fields %}
+        {{ hidden }}
+        {% endfor %}
+
+        {% for field in form.visible_fields %}
+        <div class="form-group">
+            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+            {% render_field field class="form-control" %}
+            {% for error in field.errors %}
+            <span class="help-block">{{ error }}</span>
+            {% endfor %}
+        </div>
+        {% endfor %}
+
+        <div class="form-group">
+        <button type="submit" class="btn btn-success">
+            <span class="glyphicon glyphicon-ok"></span> Save
+        </button>
+        <a href="{% url 'index' %}" class="btn btn-default">Cancel</a>
+        </div>
+    </form>
+  </div>
+{% endblock %}
+
+
+
+<!-- {% load widget_tweaks %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Posts</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <style type="text/css">
+    </style>
+
+</head>
+<h2>Alta de alumnos</h2>
+
+<body>
+    <form method="post" class="post-form" action="alumnos/create">
+        {% csrf_token %}
+        <div class="container">
+            <br>
+            <div class="form-group row">
+                <label class="col-sm-1 col-form-label"></label>
+                <div class="col-sm-4">
+                    <h3>Enter Details</h3>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Nombre</label>
+                <div class="col-sm-4">
+                    {{ form.nombre }}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Apellido Materno</label>
+                <div class="col-sm-4">
+                    {{ form.apellido_paterno }}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Apellido Materno</label>
+                <div class="col-sm-4">
+                    {{ form.apellido_materno}}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Fecha de nacimiento</label>
+                <div class="col-sm-4">
+                    {{ form.fecha_nac}}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Direccion</label>
+                <div class="col-sm-4">
+                    {{ form.direccion}}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Numero de celular</label>
+                <div class="col-sm-4">
+                    {{ form.num_cel}}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Foto de perfil</label>
+                <div class="col-sm-4">
+                    {{ form.img}}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Semestre</label>
+                <div class="col-sm-4">
+                    {{ form.semestre}}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Correo</label>
+                <div class="col-sm-4">
+                    {{ form.correo}}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Horario del alumno</label>
+                <div class="col-sm-4">
+                    {{ form.horario_alumno}}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-1 col-form-label"></label>
+                <div class="col-sm-4">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+</body>
+
+</html> -->
+
+
+<!-- {% load widget_tweaks %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Alta Alumnos</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <style type="text/css">
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-1 col-xs-1 col-sm-1"></div>
+
+            <div class="col-md-10 col-xs-10 col-sm-10 ">
+                <br />
+                <h6 style="text-align:center;">
+                    <font color="red"> Todos los campos son requeridos</font>
+                </h6>
+            </div>
+            <div class="col-md-1 col-xs-1 col-sm-1">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1 col-xs-1 col-sm-1"></div>
+            <div class="col-md-10 col-xs-10 col-sm-10">
+                <form method="post" novalidate>
+                    {% csrf_token %}
+                    {% for field in form.visible_fields %}
+                    <div class="form-group">
+                        {{ field.label_tag }}
+                        {% render_field field class="form-control" %}
+                        {% if field.help_text %}
+                        <small class="form-text text-muted">{{ field.help_text }}</small>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                    <button type="submit" class="btn btn-primary">Crear</button>
+                </form>
+                <br>
+            </div>
+            <div class="col-md-1 col-xs-1 col-sm-1"></div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+</body>
+
+</html> -->
+
+
