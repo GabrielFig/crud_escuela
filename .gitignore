@@ -1,0 +1,29 @@
+# Git
+.idea/
+
+# Normal Docs
+docs/
+
+# Python Files
+__pycache__/
+*.pyc
+secrets.py
+mysecrets.py
+
+# Local storage
+media/
+log/
+scripts/
+db.sqlite3
+datadump.json
+custom_test.py
+
+# Virtual envarioment
+venv/
+
+# Linux files
+.directory
+
+# Vim stuff
+*.swp
+.ropeproject/
