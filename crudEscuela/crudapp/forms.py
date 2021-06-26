@@ -2,6 +2,7 @@ from django import forms
 from .models import Alumnos
 
 class AlumnoForm(forms.ModelForm):
+    
     class Meta:
         model = Alumnos
         fields = "__all__"
@@ -13,6 +14,8 @@ class AlumnoForm(forms.ModelForm):
                                                 'type': 'date' }),
             'direccion': forms.TextInput(attrs={ 'class': 'form-control'}),
             'num_cel': forms.TextInput(attrs={ 'class': 'form-control' }),
-            'semestre': forms.TextInput(attrs={ 'class': 'form-control' }),
+            # 'semestre': forms.Select(attrs={ 'class': 'form-control',
+            #                                 'option' : '1'}),
             'correo': forms.EmailInput(attrs={ 'class': 'form-control' }),
         }
+        semestre = forms.ChoiceField()
