@@ -19,10 +19,8 @@ from django.urls import path
 from crudapp import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('alumnos/', views.home_alumno, name='index'),
-    path('alumnos/<int:pk>/', views.AlumnoDetailView.as_view(), name='detail'),
-    path('alumnos/edit/<int:pk>/', views.edit, name='edit'),
-    path('alumnos/create/', views.create, name='create'),
-    path('alumnos/delete/<int:pk>/', views.delete, name='delete'),
+    path('admin/', views.home_alumno, name='index'),
+    path('admin/edit/<int:pk>/', views.edit_alumno, name='edit'),
+    path('admin/create/', views.create_alumno, name='create'),
+    path('admin/delete/<int:pk>/', views.delete_alumno, name='delete'),
 ]

@@ -43,7 +43,12 @@
                     {% endif %}
                 </div>
                 {% endfor %}
-                <button type="submit" class="btn btn-primary">Actualizar</button>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success">
+                        <span class="glyphicon glyphicon-ok"></span> Guardar
+                    </button>
+                    <a href="{% url 'index' %}" class="btn btn-default">Regresar</a>
+                    </div>
             </form>
             <br>
         </div>

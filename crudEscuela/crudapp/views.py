@@ -8,11 +8,7 @@ def home_alumno(request):
     alumnos = Alumnos.objects.all()
     return render(request, 'crudapp/index.html', { 'alumnos': alumnos })
 
-class AlumnoDetailView(DetailView):
-    model = Alumnos
-    template_name = 'crudapp/alumno-detail.html'
-
-def create(request):
+def create_alumno(request):
     if request.method == "POST":  
         form = AlumnoForm(request.POST)  
         if form.is_valid():  
@@ -36,7 +32,7 @@ def create(request):
         form = AlumnoForm()  
     return render(request,'crudapp/create.html',{'form':form})  
 
-def edit(request, pk, template_name='crudapp/edit.html'):
+def edit_alumno(request, pk, template_name='crudapp/edit.html'):
     alumno = get_object_or_404(Alumnos, pk=pk)
     form = AlumnoForm(request.POST or None, instance=alumno)
     if form.is_valid():
@@ -44,7 +40,7 @@ def edit(request, pk, template_name='crudapp/edit.html'):
         return redirect('index')
     return render(request, template_name, {'form':form})
 
-def delete(request, pk, template_name='crudapp/confirm_delete.html'):
+def delete_alumno(request, pk, template_name='crudapp/confirm_delete.html'):
     alumno = get_object_or_404(Alumnos, pk=pk)
     if request.method=='POST':
         alumno.delete()

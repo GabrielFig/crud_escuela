@@ -1,120 +1,83 @@
-{% extends 'crudapp/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block content %}
-
-<div class="container">
-  <h2>
-    Alumnos
-    <a href="{% url 'create' %}" class="btn btn-primary pull-right">
-      <span class="glyphicon glyphicon-plus"></span> Alta Alumno
-    </a>
-  </h2>
-
-  <table class="table">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Nombre</th>
-        <th>Apellido Paterno</th>
-        <th>Apellido materno</th>
-        <th>Fecha de nacimiento</th>
-        <th>Direccion</th>
-        <th>Numero de celular</th>
-        <th>Semestre</th>
-        <th>Correo</th>
-        <th>Horario</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for alumnos in alumnos %}
-      <tr>
-        <td>{{ alumnos.id }}</td>
-        <td>{{ alumnos.nombre}}</td>
-        <td>{{ alumnos.apellido_paterno}}</td>
-        <td>{{ alumnos.apellido_materno}}</td>
-        <td>{{ alumnos.fecha_nac}}</td>
-        <td>{{ alumnos.direccion}}</td>
-        <td>{{ alumnos.num_cel}}</td>
-        <td>{{ alumnos.semestre}}</td>
-        <td>{{ alumnos.correo}}</td>
-        <td>{{ alumnos.horario_alumno}}</td>
-        <td>
-          <a href="delete/{{alumnos.id}}" title="Eliminar" type="button" class="btn btn-danger">Eliminar </a>
-        </td>
-        <td>
-          <a href="edit/{{alumnos.id}}" title="Editar" type="button" class="btn btn-success">Editar </a>
-        </td>
-        </tr>
-      {% empty %}
-      <tr>
-        <td colspan="6" class="text-center">No alumnos</td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-</div>
-{% endblock %}
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+  <link rel="" href="https://cdn.datatables.net/fixedheader/3.1.6/css/fixedHeader.dataTables.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 
 
 
-<!-- 
+</head>
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-1 col-xs-1 col-sm-1"></div>
-        <div class="col-md-10 col-xs-10 col-sm-10">
-            <h3 class="round3" style="text-align:center;">Alumnos</h3>
-        </div>
-        <div class="col-md-1 col-xs-1 col-sm-1"></div>
+<body>
+
+  <div class="container">
+    <h2>
+      Alumnos
+      <a href="{% url 'create' %}" class="btn btn-primary pull-right">
+        <span class="glyphicon glyphicon-plus"></span> Alta Alumno
+      </a>
+    </h2>
+    <div class="col-md-12">
+      <table class="table" id="tabla1" >
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Apellido Paterno</th>
+            <th>Apellido materno</th>
+            <th>Fecha de nacimiento</th>
+            <th>Direccion</th>
+            <th>Numero de celular</th>
+            <th>Semestre</th>
+            <th>Correo</th>
+            <th>Horario</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for alumnos in alumnos %}
+          <tr>
+            <td>{{ alumnos.id }}</td>
+            <td>{{ alumnos.nombre}}</td>
+            <td>{{ alumnos.apellido_paterno}}</td>
+            <td>{{ alumnos.apellido_materno}}</td>
+            <td>{{ alumnos.fecha_nac}}</td>
+            <td>{{ alumnos.direccion}}</td>
+            <td>{{ alumnos.num_cel}}</td>
+            <td>{{ alumnos.semestre}}</td>
+            <td>{{ alumnos.correo}}</td>
+            <td>{{ alumnos.horario_alumno}}</td>
+            <td>
+              <a href="delete/{{alumnos.id}}" title="Eliminar" type="button" class="btn btn-danger">Eliminar </a>
+            </td>
+            <td>
+              <a href="edit/{{alumnos.id}}" title="Editar" type="button" class="btn btn-success">Editar </a>
+            </td>
+          </tr>
+          {% empty %}
+          <tr>
+            <td colspan="6" class="text-center">No alumnos</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
     </div>
-    <div class="row">
-        <div class="col-md-10 col-xs-10 col-sm-10"></div>
-        <div class="col-md-2 col-xs-1 col-sm-1">
-            <br />
-            <a href="{% url 'create' %}">
-                <button type="button" class="btn btn-success">
-                    <span class="glyphicon glyphicon-plus"></span>
-                </button>
-            </a>
-        </div>
-    </div>
-    <br />
-    
-    <div class="row">
-        <div class="col-md-1 col-xs-1 col-sm-1"></div>
-        <div class="col-md-7 col-xs-7 col-sm-7">
-            <ul class="list-group">
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/fixedheader/3.1.6/js/dataTables.fixedHeader.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</body>
 
-                <li class="list-group-item ">
-                    <a href="{% url 'detail' contact.pk %}"> {{ alumno.firstName }} {{alumno.lastName}} </a> <span class="badge"></span>
-                </li>
-            </ul>
-            <br>
-        </div>
-        <div class="col-md-1 col-xs-1 col-sm-1">
-            <a href="{% url 'detail' alumno.pk %}">
-                <button type="button" class="btn btn-info">
-                    <span class="glyphicon glyphicon-open"></span>
-                </button>
-            </a>
-        </div>
-        <div class="col-md-1">
-            <a href="{% url 'edit' alumno.pk %}">
-                <button type="button" class="btn btn-info">
-                    <span class="glyphicon glyphicon-pencil"></span>
-                </button>
-            </a>
-        </div>
-        <div class="col-md-1">
-            <a href="{% url 'delete' alumno.pk %}">
-                <button type="button" class="btn btn-danger">
-                    <span class="glyphicon glyphicon-trash"></span>
-                </button>
-            </a>
-        </div>
-        <div class="col-md-1 col-xs-1 col-sm-1"></div>
-    </div>
-    
-</div>
- -->
- 
+</html>
